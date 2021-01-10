@@ -1,0 +1,9 @@
+{
+    "description": "cadastro de noticias",
+    "name":"noticias/bd",
+    "autoload": {
+        "psr-4":{
+            "App\\":"app/"
+        }
+    }
+}
