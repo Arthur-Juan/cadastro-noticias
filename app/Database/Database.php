@@ -71,7 +71,7 @@ class Database{
     public function execute($query, $params=[]){
         try{
             $statement = $this->connection->prepare($query);//PREPARA A QUERY
-            $statement->execute($params);//EXECURA A QUERY COM OS PARAMETROS
+            $statement->execute($params);//SUBSTITUI OS ? PELOS PARAMETROS E EXECUTA A QUERY
             return $statement;
         }catch(PDOException $e){
             die('ERROR '. $e->getMessage());
@@ -85,8 +85,8 @@ class Database{
      */ 
     public function insert($values){
         //DADOS DA QUERY
-        $fields =  array_keys($values); //filds pegou as chaves do array values
-        $binds = array_pad([], count($fields), '?');
+        $fields =  array_keys($values); //PEGA AS CHAVES DO ARRAY 'VALUES'
+        $binds = array_pad([], count($fields), '?'); //FAZ UM ARRAY COM UM CARACTERE ESPECÍFICO EM UM TAMANHO ESCOLHIDO
         
         //MONTA A QUERY
         $query = 'INSERT INTO '.$this->table.' ('.implode(',',$fields).') VALUES ('.implode(',',$binds).')'; //CADA ? É UM VALOR DINAMICO
@@ -96,5 +96,31 @@ class Database{
 
         //RETORNA O ID INSERIDO
         return $this->connection->lastInsertId();
+    }
+
+    //QUERY DE CONSULTA
+
+    /**
+     * Método responsável por executar uma consulta no banco
+     * @param string $where
+     * @param string $order
+     * @param string $limit
+     * @param string fields
+     * @return PDOStatement
+     */
+    public function select($where = null, $order = null, $limit = null, $fields = '*'){
+        // SELECT * FROM noticias WHERE ... ORDER BY ... LIMIT ...
+
+        //DADOS DA QUERY PARA CONFERIR SE  WHERE, ORDER E LIMIT ESTÃO DEFINIDOS
+        $where = strlen($where) ? 'WHERE ' . $where : '';
+        $order = strlen($order) ? 'ORDER BY ' . $order : '';
+        $limit = strlen($limit) ? 'LIMIT ' . $limit : '';
+
+        //MONTA A QUERY
+        $query = 'SELECT '.$fields.' FROM ' .$this->table. ' '. $where . ' '. $order . ' '. $limit;
+        
+        //EXECUTA A QUERY COM O COMANDO DO PDO, NÃO PRECISA POR PARAMETROS POIS NÃO TEM MARK QUESTION
+        return $this->execute($query);
+
     }
 }
