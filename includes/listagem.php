@@ -3,7 +3,7 @@ $resultados = '';
 
 foreach ($noticias as $noticia){
     $resultados .= ' <div class="col-md-4">
-     <div class="card mb-4 shadow-sm">
+     <div class="card mb-4 shadow">
                 
     <div class="card-body">
         <h5 class="card-body">'.$noticia->titulo.'<h5>
@@ -26,7 +26,7 @@ foreach ($noticias as $noticia){
 <main>
 
 
-<div class=" py-5 bg-light rounded">
+<div class=" py-5 bg-light rounded shadow">
         <div class="container">
 
           <div class="row">

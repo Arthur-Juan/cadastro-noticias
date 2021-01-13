@@ -57,6 +57,14 @@ class Noticias{
         return true; 
     }
 
+    public function atualizar(){
+        return (new Database('noticias'))->update('id = '.$this->id,[
+            'titulo'=>$this->titulo,
+            'conteudo'=>$this->conteudo,
+            'categoria'=>$this->categoria
+                                                                  ]);
+      }
+    
     //QUERY DE CONSULTA
 
     /**
@@ -71,5 +79,14 @@ class Noticias{
                                         ->fetchAll(PDO::FETCH_CLASS, self::class); //MÉTODO QUE TRANSOFRMA A INSTANCIA EM ARRAY
     }
 
+    /**
+     * Método responsável por buscar uma vaga com base em seu base
+     * @var integer $id
+     * @return Noticia
+     */
+    public static function getNoticia($id){
+        return (new Database('noticias'))->select("id= ".$id) //RETORNA O PDOStatement
+        ->fetchObject(self::class); //TRANSOFRMA UMA POSIÇÃO DO BANCO EM OBJETO
+    }
 
 }
