@@ -20,6 +20,22 @@ foreach ($noticias as $noticia){
   </div>';
 }
 
+$resultados = strlen($resultados) ? $resultados : '<div class="alert alert-info text-center">Nenhuma notícia encontrada!</div>';
+
+
+$mensagem = '';
+if(isset($_GET['status'])){
+  switch($_GET['status']){
+    case 'success':
+      $mensagem = '<div class="alert alert-success text-center">Ação executada com sucesso!</div>';
+      break;
+
+    case 'error':
+      $mensagem = '<div class="alert alert-danger">Ação não executada!</div>';
+      break;
+  }
+}
+
 ?>
 
 
@@ -27,6 +43,7 @@ foreach ($noticias as $noticia){
 
 
 <div class=" py-5 bg-light rounded shadow">
+        <?=$mensagem?>
         <div class="container">
 
           <div class="row">

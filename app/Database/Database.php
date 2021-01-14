@@ -143,4 +143,20 @@ class Database{
         //RETORNA SUCESSO
         return true;
       }
+      /**
+       * Mértodo responsável por excluir dados do banco
+       * @param string $where
+       * @return boolean
+       */
+      public function delete($where){
+          //MONTA A QUERY
+          $query = 'DELETE FROM '.$this->table.' WHERE '.$where .$_GET['id'];
+
+          //EXECUTA A QUERY
+
+          $this->execute($query);
+
+          //RETORNA SUCESSO
+          return true;
+      }
 }

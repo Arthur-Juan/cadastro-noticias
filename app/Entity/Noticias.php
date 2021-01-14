@@ -64,6 +64,14 @@ class Noticias{
             'categoria'=>$this->categoria
                                                                   ]);
       }
+
+      /**
+       * Método responsável por excluir uma vaga do banco
+       * @return boolean
+       */
+      public function excluir(){
+        return (new Database('noticias'))->delete('id= '.$this->id);
+      }
     
     //QUERY DE CONSULTA
 

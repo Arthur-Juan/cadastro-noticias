@@ -2,6 +2,7 @@
 require __DIR__ .'/vendor/autoload.php';
 
 use \App\Entity\Noticias;
+$obNoticia = new Noticias();
 
 define('TITLE', 'Cadastrar Notícia');
 /**
@@ -9,7 +10,6 @@ define('TITLE', 'Cadastrar Notícia');
  */
 if(isset($_POST['titulo'], $_POST['conteudo'], $_POST['categoria'])){
     
-    $obNoticia = new Noticias();
     $obNoticia->titulo      = $_POST['titulo'];
     $obNoticia->conteudo    = $_POST['conteudo'];
     $obNoticia->categoria   = $_POST['categoria'];
