@@ -3,6 +3,7 @@ require __DIR__ .'/vendor/autoload.php';
 
 use \App\Entity\Noticias;
 $obNoticia = new Noticias();
+$busca ='';
 
 define('TITLE', 'Cadastrar Notícia');
 /**
