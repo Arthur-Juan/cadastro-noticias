@@ -97,4 +97,16 @@ class Noticias{
         ->fetchObject(self::class); //TRANSOFRMA UMA POSIÇÃO DO BANCO EM OBJETO
     }
 
+    /**
+     * Método responsável por buscar uma vaga com base em seu base
+     * @var integer $id
+     * @return Noticia
+     */
+    public static function getQuantidadeNoticia($where = null){
+        return (new Database('noticias'))->select($where, null, null, 'COUNT(*) as qtd')
+        ->fetchObject()
+        ->qtd;
+    }
+
+
 }
