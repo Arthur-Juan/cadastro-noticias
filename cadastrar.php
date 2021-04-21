@@ -2,6 +2,12 @@
 require __DIR__ .'/vendor/autoload.php';
 
 use \App\Entity\Noticias;
+use \App\Session\Login;
+
+//OBRIGA O USUÁRIO A ESTAR LOGADOC
+
+Login::requireLogin();
+
 $obNoticia = new Noticias();
 $busca ='';
 

@@ -4,6 +4,11 @@ require __DIR__ .'/vendor/autoload.php';
 
 use \App\Entity\Noticias;
 use \App\Entity\Pagination;
+use \App\Session\Login;
+
+//OBRIGA O USUÁRIO A ESTAR LOGADO
+
+Login::requireLogin();
 
 //BUSCA
 $busca = filter_input(INPUT_GET, 'busca', FILTER_SANITIZE_STRING);

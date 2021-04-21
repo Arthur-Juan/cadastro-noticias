@@ -2,6 +2,12 @@
 require __DIR__ .'/vendor/autoload.php';
 
 use \App\Entity\Noticias;
+use \App\Session\Login;
+
+//OBRIGA O USUÁRIO A ESTAR LOGADO
+
+Login::requireLogin();
+
 
 define('TITLE', 'Excluir Notícia');
 

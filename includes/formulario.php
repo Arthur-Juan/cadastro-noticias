@@ -1,7 +1,12 @@
 
 
 
-
+<div class='form-group'>
+    <form method='GET' class="form-inline my-2 my-lg-0 form-group">
+      <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar por título" name='busca' value=<?=$busca ?? ''?>>
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
+    </form>
+    </div>
 <main class='text-light'>
 <h2><?=TITLE?></h2>
 <section>

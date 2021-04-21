@@ -1,3 +1,30 @@
+<?php
+
+  use \App\Session\Login;
+
+  $usuarioLogado = Login::getUsuarioLogado();
+
+
+  //DETALHES DO USUARIO 
+  $usuario = $usuarioLogado ? '<div class="dropdown mr-5">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  '.$usuarioLogado['nome'].'
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="logout.php">Deslogar</a>
+  
+  </div>' : 
+  '<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  Visitante
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="login.php">Logar</a>
+  
+  </div>' 
+?>
+
+
 <!doctype html>
 <html lang="pt_BR">
   <head>
@@ -23,22 +50,21 @@
         <a class="nav-link" href="cadastrar.php">Cadastrar notícia <span class="sr-only">(current)</span></a>
       </li>
     
-   
+      
 
       </li>
       <li class="nav-item">
-      
+    
+</div>
       </li>
     </ul>
-
-    <div class='form-group'>
-    <form method='GET' class="form-inline my-2 my-lg-0 form-group">
-      <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar por título" name='busca' value=<?=$busca?>>
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
-    </form>
+    <div class="d-flex justify-content-end"> 
+      <?=$usuario?>
     </div>
+    
   </div>
 </nav>
 
 <div class='container'>
+
    
