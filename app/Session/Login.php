@@ -39,7 +39,7 @@ class Login{
     //DESLOGA O USUÁRIO
     public static function logout(){
         self::init();
-        echo '<pre>'; print_r($_SESSION['usuario']); '</pre>'; exit;
+      
         //MATA A SESSÃO DO USUÁRIO
         unset($_SESSION['usuario']);
 
